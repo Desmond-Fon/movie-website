@@ -10,12 +10,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
+import { Link } from "react-router-dom";
 
 const getPosterUrl = (posterpath) => {
   return `https://www.themoviedb.org/t/p/w440_and_h660_face${posterpath}`;
 };
 
-const DisplayTrending = ({ movie, showName }) => {
+const DisplayTrending = ({ movie, handleClick }) => {
   return (
     <>
 
@@ -32,17 +33,18 @@ const DisplayTrending = ({ movie, showName }) => {
         onSlideChange={() => console.log("slide change")}
       >
         {movie.map((movie, index) => (
-          <SwiperSlide key={movie.id} virtualIndex={index}>
-           <div className='w-full md:h-[900px]'>
-           <img
-              src={getPosterUrl(movie.poster_path)}
-              alt=""
-              className="w-full h-full"
-            />
-           </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          <SwiperSlide key={movie.id} virtualIndex={index} onClick={handleClick} data-test-id={movie.original_name || movie.original_title}>
+          <Link to='/Details'>
+          <div className='w-full md:h-[900px]'>
+          <img
+             src={getPosterUrl(movie.poster_path)}
+             alt=""
+             className="w-full h-full"
+           />
+          </div></Link>
+         </SwiperSlide>
+       ))}
+     </Swiper>
     </>
   );
 };

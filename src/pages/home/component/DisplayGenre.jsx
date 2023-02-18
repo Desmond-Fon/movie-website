@@ -8,12 +8,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
+import { Link } from "react-router-dom";
 
 const getPosterUrl = (posterpath) => {
   return `https://www.themoviedb.org/t/p/w440_and_h660_face${posterpath}`;
 };
 
-const DisplayGenre = ({ movie, showName }) => {
+const DisplayGenre = ({ changeGenre, handleClick }) => {
   return (
     <>
 
@@ -29,15 +30,16 @@ const DisplayGenre = ({ movie, showName }) => {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        {movie.map((movie, index) => (
-          <SwiperSlide key={movie.id} virtualIndex={index}>
-           <div className='w-full md:h-[900px]'>
-           <img
-              src={getPosterUrl(movie.poster_path)}
-              alt=""
-              className="w-full h-full"
-            />
-           </div>
+        {changeGenre.map((movie, index) => (
+          <SwiperSlide key={movie.id} virtualIndex={index} onClick={handleClick} data-test-id={movie.original_name || movie.original_title}>
+           <Link to='/Details'>
+          <div className='w-full md:h-[900px]'>
+          <img
+             src={getPosterUrl(movie.poster_path)}
+             alt=""
+             className="w-full h-full"
+           />
+          </div></Link>
           </SwiperSlide>
         ))}
       </Swiper>
