@@ -1,9 +1,9 @@
-const Select = ({ region, setRegion }) => {
+const Select = ({ genre, setGenre }) => {
     return (
       <select
         className="bg-white dark:bg-darkBlue dark:text-whiteLMDM text-sm w-[150px] py-3 px-2 border-none mb-8 text-veryDarkBlueLM rounded-[4px] shadow-md outline-none md:w-[200px]"
-        value={region}
-        onChange={(e) => setRegion(e.target.value)}
+        value={genre}
+        onChange={(e) => setGenre(e.target.value)}
       >
         <option value="">Filter by Genre</option>
         <option value="28" className="text-sm ">

@@ -1,5 +1,3 @@
-// import { Link } from "react-router-dom";
-// import { Carousel } from "flowbite-react";
 import { Virtual } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -15,7 +13,7 @@ const getPosterUrl = (posterpath) => {
   return `https://www.themoviedb.org/t/p/w440_and_h660_face${posterpath}`;
 };
 
-const DisplayTrending = ({ movie, showName }) => {
+const DisplaySearch = ({ searchMovie, showName }) => {
   return (
     <>
 
@@ -31,7 +29,7 @@ const DisplayTrending = ({ movie, showName }) => {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
-        {movie.map((movie, index) => (
+        {searchMovie.map((movie, index) => (
           <SwiperSlide key={movie.id} virtualIndex={index}>
            <div className='w-full md:h-[900px]'>
            <img
@@ -47,4 +45,4 @@ const DisplayTrending = ({ movie, showName }) => {
   );
 };
 
-export default DisplayTrending;
+export default DisplaySearch;

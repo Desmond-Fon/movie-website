@@ -38,8 +38,8 @@ function App() {
         return res.json();
       })
       .then((users) => {
-        console.log(users)
-        setMovie(users);
+        console.log(users.results)
+        setMovie(users.results);
       });
   }, []);
 
@@ -75,7 +75,7 @@ function App() {
         return res.json();
       })
       .then((users) => {
-        // console.log(users)
+        console.log(users)
         setChangeGenre(users);
         setShowGenre(true);
         setShowMovie(false);
