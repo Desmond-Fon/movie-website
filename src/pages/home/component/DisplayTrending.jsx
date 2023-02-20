@@ -19,7 +19,6 @@ const getPosterUrl = (posterpath) => {
 const DisplayTrending = ({ movie, handleClick }) => {
   return (
     <>
-
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -33,18 +32,24 @@ const DisplayTrending = ({ movie, handleClick }) => {
         onSlideChange={() => console.log("slide change")}
       >
         {movie.map((movie, index) => (
-          <SwiperSlide key={movie.id} virtualIndex={index} onClick={handleClick} data-test-id={movie.original_name || movie.original_title}>
-          <Link to='/Details'>
-          <div className='w-full md:h-[900px]'>
-          <img
-             src={getPosterUrl(movie.poster_path)}
-             alt=""
-             className="w-full h-full"
-           />
-          </div></Link>
-         </SwiperSlide>
-       ))}
-     </Swiper>
+          <SwiperSlide
+            key={movie.id}
+            virtualIndex={index}
+            onClick={handleClick}
+            data-test-id={movie.original_name || movie.original_title}
+          >
+            <Link to="/Details">
+              <div className="w-full md:h-[900px]">
+                <img
+                  src={getPosterUrl(movie.poster_path)}
+                  alt=""
+                  className="w-full h-full"
+                />
+              </div>
+            </Link>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   );
 };

@@ -17,7 +17,6 @@ const getPosterUrl = (posterpath) => {
 const DisplayGenre = ({ changeGenre, handleClick }) => {
   return (
     <>
-
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -31,15 +30,21 @@ const DisplayGenre = ({ changeGenre, handleClick }) => {
         onSlideChange={() => console.log("slide change")}
       >
         {changeGenre.map((movie, index) => (
-          <SwiperSlide key={movie.id} virtualIndex={index} onClick={handleClick} data-test-id={movie.original_name || movie.original_title}>
-           <Link to='/Details'>
-          <div className='w-full md:h-[900px]'>
-          <img
-             src={getPosterUrl(movie.poster_path)}
-             alt=""
-             className="w-full h-full"
-           />
-          </div></Link>
+          <SwiperSlide
+            key={movie.id}
+            virtualIndex={index}
+            onClick={handleClick}
+            data-test-id={movie.original_name || movie.original_title}
+          >
+            <Link to="/Details">
+              <div className="w-full md:h-[900px]">
+                <img
+                  src={getPosterUrl(movie.poster_path)}
+                  alt=""
+                  className="w-full h-full"
+                />
+              </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

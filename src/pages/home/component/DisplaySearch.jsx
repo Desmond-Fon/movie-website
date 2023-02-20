@@ -14,11 +14,9 @@ const getPosterUrl = (posterpath) => {
   return `https://www.themoviedb.org/t/p/w440_and_h660_face${posterpath}`;
 };
 
-
 const DisplaySearch = ({ searchMovie, handleClick }) => {
   return (
     <>
-
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -32,15 +30,21 @@ const DisplaySearch = ({ searchMovie, handleClick }) => {
         onSlideChange={() => console.log("slide change")}
       >
         {searchMovie.map((movie, index) => (
-          <SwiperSlide key={movie.id} virtualIndex={index} onClick={handleClick} data-test-id={movie.original_name || movie.original_title}>
-          <Link to='/Details'>
-          <div className='w-full md:h-[900px]'>
-          <img
-             src={getPosterUrl(movie.poster_path)}
-             alt=""
-             className="w-full h-full"
-           />
-          </div></Link>
+          <SwiperSlide
+            key={movie.id}
+            virtualIndex={index}
+            onClick={handleClick}
+            data-test-id={movie.original_name || movie.original_title}
+          >
+            <Link to="/Details">
+              <div className="w-full md:h-[900px]">
+                <img
+                  src={getPosterUrl(movie.poster_path)}
+                  alt=""
+                  className="w-full h-full"
+                />
+              </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
