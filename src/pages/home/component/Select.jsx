@@ -21,9 +21,6 @@ const Select = ({ genre, setGenre }) => {
       <option value="80" className="text-sm ">
         Crime
       </option>
-      <option value="99" className="text-sm ">
-        Documentary
-      </option>
       <option value="18" className="text-sm ">
         Drama
       </option>
@@ -33,15 +30,8 @@ const Select = ({ genre, setGenre }) => {
       <option value="14" className="text-sm ">
         Fantasy
       </option>
-      <option value="36" className="text-sm ">
-        History
-      </option>
-
       <option value="27" className="text-sm ">
         Horror
-      </option>
-      <option value="10402" className="text-sm ">
-        Music
       </option>
       <option value="9648" className="text-sm ">
         Mystery
@@ -57,12 +47,6 @@ const Select = ({ genre, setGenre }) => {
       </option>
       <option value="53" className="text-sm ">
         Thriller
-      </option>
-      <option value="10752" className="text-sm ">
-        War
-      </option>
-      <option value="37" className="text-sm ">
-        Western
       </option>
     </select>
   );

@@ -19,7 +19,7 @@ const DisplaySearch = ({ searchMovie, handleClick }) => {
     <>
       <Swiper
         spaceBetween={50}
-        slidesPerView={1}
+        slidesPerView={5}
         virtual
         modules={[Navigation, Pagination, Scrollbar, A11y, Virtual]}
         navigation
@@ -37,12 +37,51 @@ const DisplaySearch = ({ searchMovie, handleClick }) => {
             data-test-id={movie.original_name || movie.original_title}
           >
             <Link to="/Details">
-              <div className="w-full md:h-[900px]">
+              <div className="w-full md:h-[350px] bg-darkBlue rounded-md">
                 <img
-                  src={getPosterUrl(movie.poster_path)}
+                  src={
+                    getPosterUrl(movie.poster_path) ||
+                    getPosterUrl(movie.backdrop_path)
+                  }
                   alt=""
-                  className="w-full h-full"
+                  className="w-full h-[200px] rounded-md"
                 />
+                <div className="px-2">
+                <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">TITLE: <span className="font-light">{movie.original_name || movie.original_title}</span></p>
+                <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">RELEASE DATE: <span className="font-light">{movie.release_date}</span></p>
+                <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">Genre :
+                 <span className="font-light">
+                 {movie.genre_ids.map((genre) => {
+                    return genre === 28
+                      ? "Action "
+                      : genre === 12
+                      ? "Adventure "
+                      : genre === 16
+                      ? "Animation "
+                      : genre === 35
+                      ? "Comedy "
+                      : genre === 80
+                      ? "Crime "
+                      : genre === 18
+                      ? "Drama "
+                      : genre === 10751
+                      ? "Family "
+                      : genre === 14
+                      ? "Fantasy "
+                      : genre === 27
+                      ? "Horror"
+                      : genre === 9648
+                      ? "Mystery "
+                      : genre === 10770
+                      ? "Romance, TV MOvie "
+                      : genre === 53
+                      ? "Sci-fi, Thriller "
+                      : "None";
+                  })}
+                 </span>
+                </p>
+                <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">Popularity: <span className="font-light">{movie.popularity}</span></p>
+                </div>
               </div>
             </Link>
           </SwiperSlide>
