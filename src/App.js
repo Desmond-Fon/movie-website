@@ -30,6 +30,9 @@ function App() {
   const [changeGenre, setChangeGenre] = useState([]);
   const [details, setDetails] = useState("");
   const [showDetails, setShowDetails] = useState([]);
+  const [topRated, setTopRated] = useState([]);
+  const [upComing, setUpComing] = useState([]);
+  const [playing, setPlaying] = useState([]);
 
 
   useEffect(() => {
@@ -86,6 +89,66 @@ function App() {
   }, [genre]);
 
   useEffect(() => {
+    // console.log(region);
+
+    fetch(`
+    https://api.themoviedb.org/3/movie/popular?api_key=12a1b5b9a07d597442572dd75e61a4d4&language=en-US&page=1`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Something went wrong. ${res.status}`);
+        return res.json();
+      })
+      .then((users) => {
+        console.log(users)
+        setTopRated(users.results);
+        // setShowGenre(true);
+        // setShowMovie(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    // console.log(region);
+
+    fetch(`
+    https://api.themoviedb.org/3/movie/upcoming?api_key=12a1b5b9a07d597442572dd75e61a4d4&language=en-US&page=1`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Something went wrong. ${res.status}`);
+        return res.json();
+      })
+      .then((users) => {
+        console.log(users)
+        setUpComing(users.results);
+        // setShowGenre(true);
+        // setShowMovie(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    // console.log(region);
+
+    fetch(`
+    https://api.themoviedb.org/3/movie/now_playing?api_key=12a1b5b9a07d597442572dd75e61a4d4&language=en-US&page=1`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Something went wrong. ${res.status}`);
+        return res.json();
+      })
+      .then((users) => {
+        console.log(users)
+        setPlaying(users.results);
+        // setShowGenre(true);
+        // setShowMovie(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  useEffect(() => {
     let userSearch = details.toLowerCase();
     console.log(details);
     fetch(`
@@ -129,6 +192,9 @@ function App() {
               changeGenre={changeGenre}
               showMovie={showMovie}
               showSearch={showSearch}
+              topRated={topRated}
+              upComing={upComing}
+              playing={playing}
               />
             }
           />

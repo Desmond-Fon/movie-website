@@ -3,6 +3,9 @@ import Select from "./component/Select";
 import DisplayTrending from "./component/DisplayTrending";
 import DisplayGenre from "./component/DisplayGenre";
 import DisplaySearch from "./component/DisplaySearch";
+import TopRated from "./component/TopRated";
+import Upcoming from "./component/Upcoming";
+import Playing from "./component/Playing";
 
 const Home = ({
   movie,
@@ -11,10 +14,12 @@ const Home = ({
   searchMovie,
   genre,
   setGenre,
-  showMovie,
+  topRated,
   showName,
   changeGenre,
   handleClick,
+  upComing,
+  playing,
 }) => {
 
 const handleGenreClick = (e) => {
@@ -41,12 +46,29 @@ const handleGenreClick = (e) => {
           handleClick={handleClick}
         />
 
+<Playing
+          playing={playing}
+          showName={showName}
+          handleClick={handleClick}
+        />
+
 
         <DisplayGenre
           changeGenre={changeGenre}
           showName={showName}
           handleClick={handleClick}
           genre={genre}
+        />
+
+<TopRated
+          topRated={topRated}
+          showName={showName}
+          handleClick={handleClick}
+        />
+        <Upcoming
+          upComing={upComing}
+          showName={showName}
+          handleClick={handleClick}
         />
       
     </main>
