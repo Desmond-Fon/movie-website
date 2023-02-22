@@ -17,7 +17,9 @@ const getPosterUrl = (posterpath) => {
 const TopRated = ({ topRated, handleClick }) => {
   return (
     <div className="mb-10">
-              <p className='dark:text-whiteLMDM text-veryDarkBlueLM font-semibold text-lg p-5'>POPULAR</p>
+      <p className="dark:text-whiteLMDM text-veryDarkBlueLM font-semibold text-lg p-5">
+        POPULAR
+      </p>
       <Swiper
         spaceBetween={50}
         slidesPerView={5}
@@ -27,8 +29,8 @@ const TopRated = ({ topRated, handleClick }) => {
         autoplay={1000}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
       >
         {topRated.map((movie, index) => (
           <SwiperSlide
@@ -48,40 +50,52 @@ const TopRated = ({ topRated, handleClick }) => {
                   className="w-full h-[200px] rounded-md"
                 />
                 <div className="px-2">
-                <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">TITLE: <span className="font-light">{movie.original_name || movie.original_title}</span></p>
-                <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">RELEASE DATE: <span className="font-light">{movie.release_date}</span></p>
-                <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">Genre :
-                 <span className="font-light">
-                 {movie.genre_ids.map((genre) => {
-                    return genre === 28
-                      ? "Action "
-                      : genre === 12
-                      ? "Adventure "
-                      : genre === 16
-                      ? "Animation "
-                      : genre === 35
-                      ? "Comedy "
-                      : genre === 80
-                      ? "Crime "
-                      : genre === 18
-                      ? "Drama "
-                      : genre === 10751
-                      ? "Family "
-                      : genre === 14
-                      ? "Fantasy "
-                      : genre === 27
-                      ? "Horror"
-                      : genre === 9648
-                      ? "Mystery "
-                      : genre === 10770
-                      ? "Romance, TV MOvie "
-                      : genre === 53
-                      ? "Sci-fi, Thriller "
-                      : "None";
-                  })}
-                 </span>
-                </p>
-                <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">Popularity: <span className="font-light">{movie.popularity}</span></p>
+                  <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">
+                    TITLE:{" "}
+                    <span className="font-light">
+                      {movie.original_name || movie.original_title}
+                    </span>
+                  </p>
+                  <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">
+                    RELEASE DATE:{" "}
+                    <span className="font-light">{movie.release_date}</span>
+                  </p>
+                  <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">
+                    Genre :
+                    <span className="font-light">
+                      {movie.genre_ids.map((genre) => {
+                        return genre === 28
+                          ? "Action "
+                          : genre === 12
+                          ? "Adventure "
+                          : genre === 16
+                          ? "Animation "
+                          : genre === 35
+                          ? "Comedy "
+                          : genre === 80
+                          ? "Crime "
+                          : genre === 18
+                          ? "Drama "
+                          : genre === 10751
+                          ? "Family "
+                          : genre === 14
+                          ? "Fantasy "
+                          : genre === 27
+                          ? "Horror"
+                          : genre === 9648
+                          ? "Mystery "
+                          : genre === 10770
+                          ? "Romance, TV MOvie "
+                          : genre === 53
+                          ? "Sci-fi, Thriller "
+                          : "None";
+                      })}
+                    </span>
+                  </p>
+                  <p className="text-sm font-semibold text-veryDarkBlueLM dark:text-whiteLMDM">
+                    Popularity:{" "}
+                    <span className="font-light">{movie.popularity}</span>
+                  </p>
                 </div>
               </div>
             </Link>

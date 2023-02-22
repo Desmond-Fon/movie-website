@@ -1,12 +1,12 @@
-import './App.css';
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import { useState, useEffect } from "react";
 import Home from "./pages/home";
 import Details from "./pages/details";
+import Footer from "./components/Footer";
 
 function App() {
-
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
@@ -34,14 +34,15 @@ function App() {
   const [upComing, setUpComing] = useState([]);
   const [playing, setPlaying] = useState([]);
 
-
   useEffect(() => {
-    fetch("https://api.themoviedb.org/3/trending/all/week?api_key=12a1b5b9a07d597442572dd75e61a4d4")
+    fetch(
+      "https://api.themoviedb.org/3/trending/all/week?api_key=12a1b5b9a07d597442572dd75e61a4d4"
+    )
       .then((res) => {
         return res.json();
       })
       .then((users) => {
-        console.log(users.results)
+        // console.log(users.results);
         setMovie(users.results);
       });
   }, []);
@@ -49,7 +50,7 @@ function App() {
   useEffect(() => {
     // console.log(name);
     let userSearch = name.toLowerCase();
-    console.log(name)
+    // console.log(name);
     fetch(`
     https://api.themoviedb.org/3/search/movie?api_key=12a1b5b9a07d597442572dd75e61a4d4&language=en-US&query=${userSearch}&page=1&include_adult=false`)
       .then((res) => {
@@ -60,7 +61,7 @@ function App() {
         return res.json();
       })
       .then((users) => {
-        console.log(users)
+        // console.log(users);
         setSearchMovie(users.results);
         setShowMovie(true);
         setShowSearch(true);
@@ -72,13 +73,15 @@ function App() {
   useEffect(() => {
     // console.log(region);
 
-    fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=12a1b5b9a07d597442572dd75e61a4d4&language=en-US&page=1`)
+    fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=12a1b5b9a07d597442572dd75e61a4d4&language=en-US&page=1`
+    )
       .then((res) => {
         if (!res.ok) throw new Error(`Something went wrong. ${res.status}`);
         return res.json();
       })
       .then((users) => {
-        console.log(users)
+        // console.log(users);
         setChangeGenre(users.results);
         // setShowGenre(true);
         // setShowMovie(false);
@@ -98,7 +101,7 @@ function App() {
         return res.json();
       })
       .then((users) => {
-        console.log(users)
+        // console.log(users);
         setTopRated(users.results);
         // setShowGenre(true);
         // setShowMovie(false);
@@ -118,7 +121,7 @@ function App() {
         return res.json();
       })
       .then((users) => {
-        console.log(users)
+        // console.log(users);
         setUpComing(users.results);
         // setShowGenre(true);
         // setShowMovie(false);
@@ -138,7 +141,7 @@ function App() {
         return res.json();
       })
       .then((users) => {
-        console.log(users)
+        // console.log(users);
         setPlaying(users.results);
         // setShowGenre(true);
         // setShowMovie(false);
@@ -150,7 +153,7 @@ function App() {
 
   useEffect(() => {
     let userSearch = details.toLowerCase();
-    console.log(details);
+    // console.log(details);
     fetch(`
     https://api.themoviedb.org/3/search/movie?api_key=12a1b5b9a07d597442572dd75e61a4d4&language=en-US&query=${userSearch}&page=1&include_adult=false`)
       .then((res) => {
@@ -165,46 +168,45 @@ function App() {
       });
   }, [details]);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     let el = event.currentTarget.dataset.testId;
     setDetails(el);
-    console.log(el);
+    // console.log(el);
   };
-
-
 
   return (
     <div className="font-nunito h-screen bg-veryLightGrayLM dark:bg-veryDarkBlueDM">
       <Header onSwitch={handleThemeSwitch} />
-           <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route
             path="/"
             element={
-              <Home 
-              movie={movie}
-              name={name}
-              setName={setName}
-              searchMovie={searchMovie}
-              genre={genre}
-              setGenre={setGenre}
-              handleClick={handleClick}
-              changeGenre={changeGenre}
-              showMovie={showMovie}
-              showSearch={showSearch}
-              topRated={topRated}
-              upComing={upComing}
-              playing={playing}
+              <Home
+                movie={movie}
+                name={name}
+                setName={setName}
+                searchMovie={searchMovie}
+                genre={genre}
+                setGenre={setGenre}
+                handleClick={handleClick}
+                changeGenre={changeGenre}
+                showMovie={showMovie}
+                showSearch={showSearch}
+                topRated={topRated}
+                upComing={upComing}
+                playing={playing}
               />
             }
           />
 
           <Route
             path="/details"
-            element={<Details showDetails={showDetails} details={details}/>}
+            element={<Details showDetails={showDetails} details={details} />}
           />
-          </Routes>
-        </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+      <Footer />
     </div>
   );
 }

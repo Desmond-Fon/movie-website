@@ -28,8 +28,8 @@ const DisplayTrending = ({ movie, handleClick }) => {
         autoplay={1000}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
       >
         {movie.map((movie, index) => (
           <SwiperSlide
