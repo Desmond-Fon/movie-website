@@ -18,7 +18,7 @@ const getPosterUrl = (posterpath) => {
 
 const DisplayTrending = ({ movie, handleClick }) => {
   return (
-    <>
+    <div className="mb-10">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -50,7 +50,7 @@ const DisplayTrending = ({ movie, handleClick }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 

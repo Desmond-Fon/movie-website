@@ -8,41 +8,47 @@ const Home = ({
   movie,
   name,
   setName,
-  showGenre,
   searchMovie,
   genre,
   setGenre,
   showMovie,
-  countries,
   showName,
   changeGenre,
   handleClick,
 }) => {
+
+const handleGenreClick = (e) => {
+  setGenre(e.target.value)
+  console.log(genre);
+}
+
   return (
     <main className="px-4 md:px-0 bg-veryLightGrayLM text-veryDarkBlueLM pt-7 dark:bg-veryDarkBlueDM dark:text-whiteLMDM w-full">
       <div className="md:flex justify-between items-center md:px-20">
         <SearchBar name={name} setName={setName} handleClick={handleClick} />
-        <Select genre={genre} setGenre={setGenre} />
+        <Select genre={genre} setGenre={setGenre} handleClick={handleClick}  handleGenreClick={handleGenreClick}/>
       </div>
-      {showMovie ? (
+
         <DisplayTrending
           movie={movie}
           showName={showName}
           handleClick={handleClick}
         />
-      ) : showGenre ? (
-        <DisplayGenre
-          changeGenre={changeGenre}
-          showName={showName}
-          handleClick={handleClick}
-        />
-      ) : (
+
         <DisplaySearch
           searchMovie={searchMovie}
           showName={showName}
           handleClick={handleClick}
         />
-      )}
+
+
+        <DisplayGenre
+          changeGenre={changeGenre}
+          showName={showName}
+          handleClick={handleClick}
+          genre={genre}
+        />
+      
     </main>
   );
 };

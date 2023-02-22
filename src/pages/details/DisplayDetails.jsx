@@ -26,22 +26,22 @@ const DisplayDetails = ({ showDetails }) => {
                     <span className="font-light">{movie.overview}</span>
                   </p>
                   <p className="font-semibold md:pb-3">
-                    Population:{" "}
-                    <span className="font-light">{movie.population}</span>
+                    Release Date:{" "}
+                    <span className="font-light">{movie.release_date}</span>
                   </p>
                   <p className="font-semibold md:pb-3">
-                    Region: <span className="font-light">{movie.region}</span>
+                    Popularity: <span className="font-light">{movie.popularity}</span>
                   </p>
-                  <p className="font-semibold md:pb-3">
+                  {/* <p className="font-semibold md:pb-3">
                     Sub Region:{" "}
                     <span className="font-light">{movie.subregion}</span>
                   </p>
                   <p className="font-semibold md:pb-3">
                     Capital: <span className="font-light">{movie.capital}</span>
-                  </p>
+                  </p> */}
                 </div>
 
-                <div className="mt-5 md:mt-16">
+                {/* <div className="mt-5 md:mt-16">
                   <p className="font-semibold md:pb-3">
                     Top Level Domain:{" "}
                     <span className="font-light">{movie.topLevelDomain}</span>
@@ -58,15 +58,15 @@ const DisplayDetails = ({ showDetails }) => {
                       <span className="font-light"> {lang.name},</span>
                     ))}
                   </p>
-                </div>
+                </div> */}
               </div>
 
-              <div className="mt-5 md:mt-14">
+              {/* <div className="mt-5 md:mt-14">
                 <h2 className="text-[16px]  font-semibold">
                   Border Countries:
                 </h2>
                 <p className="font-semibold"></p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

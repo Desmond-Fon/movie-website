@@ -16,7 +16,7 @@ const getPosterUrl = (posterpath) => {
 
 const DisplaySearch = ({ searchMovie, handleClick }) => {
   return (
-    <>
+    <div className="mb-10">
       <Swiper
         spaceBetween={50}
         slidesPerView={5}
@@ -87,7 +87,7 @@ const DisplaySearch = ({ searchMovie, handleClick }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 

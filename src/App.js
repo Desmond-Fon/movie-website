@@ -25,8 +25,8 @@ function App() {
   const [name, setName] = useState("");
   const [searchMovie, setSearchMovie] = useState([]);
   const [genre, setGenre] = useState("");
-  const [showMovie, setShowMovie] = useState(false);
-  const [showGenre, setShowGenre] = useState(true);
+  const [showMovie, setShowMovie] = useState(true);
+  const [showSearch, setShowSearch] = useState(false);
   const [changeGenre, setChangeGenre] = useState([]);
   const [details, setDetails] = useState("");
   const [showDetails, setShowDetails] = useState([]);
@@ -59,8 +59,8 @@ function App() {
       .then((users) => {
         console.log(users)
         setSearchMovie(users.results);
-        setShowMovie(false);
-        setShowGenre(false);
+        setShowMovie(true);
+        setShowSearch(true);
       });
     //  .catch(err => {console.error(err)
     //  })
@@ -77,8 +77,8 @@ function App() {
       .then((users) => {
         console.log(users)
         setChangeGenre(users.results);
-        setShowGenre(false);
-        setShowMovie(true);
+        // setShowGenre(true);
+        // setShowMovie(false);
       })
       .catch((err) => {
         console.error(err);
@@ -105,6 +105,7 @@ function App() {
   const handleClick = event => {
     let el = event.currentTarget.dataset.testId;
     setDetails(el);
+    console.log(el);
   };
 
 
@@ -127,7 +128,7 @@ function App() {
               handleClick={handleClick}
               changeGenre={changeGenre}
               showMovie={showMovie}
-              showGenre={showGenre}
+              showSearch={showSearch}
               />
             }
           />
